@@ -1,8 +1,18 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 int main() {
-	cout << "Hello World";
-	return 0;
+
+	std::string astring;
+
+	cin >> astring;
+
+	cout << astring;
+
+	if(astring == "y"){
+		cout << "it is y";
+	}
+	
 }
