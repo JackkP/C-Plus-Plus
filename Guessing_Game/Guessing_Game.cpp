@@ -71,8 +71,3 @@ int main(){
 	}
         return 0;
 }
-
-
-bool isAnInt(const string s){
-  return s.find_first_not_of( "0123456789" ) == string::npos;
-}
