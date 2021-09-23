@@ -17,7 +17,7 @@ int main() {
 	cin.get(str, 80);
 	cin.get();
 	
-	cout << str;
+	cout << "\"" << str << "\"";
 	// remove all non-alphanumeric characters and capitalize all letters
 	char c;
 	int j = 0;
@@ -40,7 +40,7 @@ int main() {
 	}
 	str2[j] = '\0';
 
-	if (strcmp(str, str2) == 0) {cout << " it is a palindrome" << endl;} 
+	if (strcmp(str, str2) == 0) {cout << " is a palindrome" << endl;} 
 	else cout << " is not a palindrome" << endl;
 
 	return 0;

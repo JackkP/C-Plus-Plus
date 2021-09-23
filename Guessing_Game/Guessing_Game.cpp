@@ -1,6 +1,6 @@
 #include <iostream>
 #include <ctime> 
-#include <string>
+#include <cstring>
 
 /* Jack Porter, 9/15/2021
  *
@@ -30,7 +30,7 @@ int main(){
 		int guess = 0;
 		
 		//use a string for input so non integer inputs can be handled and not break
-		std::string strIn = "";
+		char strIn[100];
 		
 		//guess loop
         	while(true) {
@@ -58,7 +58,7 @@ int main(){
 		cout << "Correct! it took you " << guesses << " guesses!\n\nPlay again? (y/n)" << endl;
 		
 		//again, use a string to handle other inputs
-		std::string next;
+		char next[100];
 
 		while(true) {//untill a valid input is recieved
 			cin >> next;
