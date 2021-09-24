@@ -62,11 +62,11 @@ int main(){
 
 		while(true) {//untill a valid input is recieved
 			cin >> next;
-			if(next == "y" || next == "n") {break;}
+			if(strcmp(next, "y") == 0 || strcmp(next, "n") == 0) {break;}
 			cout << "'" << next << "'" << " is not 'y' or 'n'. Please enter 'y' or 'n'" << endl;
 		}
 
-		if(next == "n") {break;}
+		if(strcmp(next, "n") == 0) {break;}
 
 	}
         return 0;
