@@ -41,7 +41,7 @@ int main(){
 				cin >> strIn;
 
 				try {
-					guess = stoi(strIn);
+					guess = atoi(strIn);
 					break;
 				}
 				catch(std::invalid_argument) {cout << "please enter a number\n";}
