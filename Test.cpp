@@ -1,9 +1,9 @@
 #include <iostream>
-#include <string>
+#include <cstring>
 
 using namespace std;
 
-//char board[3][3] = {{'x','x','x'},{'x','x','x'},{'x','x','x'}};
+char board[3][3] = {{' ',' ',' '},{' ',' ',' '},{' ',' ',' '}};
 
 
 void printBoard(char board[3][3]){
@@ -61,17 +61,51 @@ char checkWin(char board [3][3]){
 
 }
 
+void getMove(char (& rslt)[3]) {
+	
+	char coords[100];
+
+
+	//char rslt[3];
+	
+	while (true){
+		
+
+		cin.get(coords, 100);
+		cin.get();
+	
+		cout << "coord[0]: " << coords[0] << " coords[1]: " << coords[1] << endl;
+		if ( 49 <= coords[0] && 51 >= coords[0] && 97 <= coords[1] && 99 >= coords[1] && coords[2] == '\0') {
+			if (board[coords[0] - 49][coords[1]- 97] == ' ') {
+				strcpy(rslt, coords);
+				break;
+			}
+			else {
+				cout << "try again" << endl;
+			}
+		}
+		else {
+			cout << "try again" << endl;
+		}
+	}
+
+	return;
+}
 
 int main() {
-	char board[3][3] = {{'x',' ','o'},{'o','x','x'},{'o','o','o'}};
+	//board[3][3] = {{'x',' ','o'},{'o','x','x'},{'o','o','o'}};
 
 	printBoard(board);
 	
-	cout << board << endl;
-	
 	char winner = checkWin(board);	
 
-	if (boardFull(board)) cout << "board is full" << endl;
+	//if (boardFull(board)) cout << "board is full" << endl;
+	
+	char nextMove[3];
+
+	getMove(nextMove);
+
+	cout << nextMove[3] << endl;
 
 	cout << winner << endl;
 	return 0;

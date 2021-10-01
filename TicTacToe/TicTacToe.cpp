@@ -84,33 +84,42 @@ bool boardFull() {
 	return full;
 }
 	
-/* This method gets a valid move from a player (translated? to c++??)
- * It first checks if the input is a move on the board by converting the characters in the string to their unicode integer counterparts.
- * Since they are ordered, we can just check to make sure that they are within a range of integers. It also checks to make sure that the input is the right length.
- * It then subtracts a value so those numbers are between 0 and 2 (the index range of the board array) and checks that they are indeed empty slots in the board.
- * if all of these are OK, it will return the input as a valid input, if not, we can just implement recursion to start again.
- */
-void getMove(char & rslt[3]) {
+// This method gets a valid move from a player (translated to C++??)
+void getMove(char (& rslt)[3]) {
 	
-	char coords[3];
+	char coords[100];
+	
+	while (true){
 
-	cin.get(coords, 3);
-	char rslt[3];
-	
-	if ( 49 <= coords[0] && 51 >= coords[0] && 97 <= coords[1] && 99 >= coords[1] && coords.length() == 2) {
-		if (board[coords[0] - 49][coords[1]- 97].equals(" ")) {
-			strcpy(rslt, coords);
+		cin.get(coords, 100);
+		cin.get();
+
+		if ( 49 <= coords[0] && 51 >= coords[0] && 97 <= coords[1] && 99 >= coords[1] && coords[2] == '\0') {
+			if (board[coords[0] - 49][coords[1]- 97] == ' ') {
+				strcpy(rslt, coords);
+				break;
+			}
+			else {
+				cout << "try again" << endl;
+			}
 		}
 		else {
 			cout << "try again" << endl;
-			rslt = getMove(board);
 		}
 	}
-	else {
-		cout << "try again" << endl;
-		rslt = getMove(board, scanner);
+
+	return;
+}
+
+void clearBoard() {
+	
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			board[i][j] = ' ';
+		}
 	}
-	return rslt;
+	return;
+
 }
 
 
@@ -128,15 +137,23 @@ int main() { // should be translated to c++
 	
 	//continue playing while in this loop
 	while (true) {
-		char board[][] = {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}};			
-		cout << "Player 1 (x) starts" <endl;
-		char player[5] = "1 (x)";
 		
-		char scoreXDisp[6] = " wins";
-		char scoreODisp[6] = " wins";
-		char drawsDisp[7] = " draws";
+		clearBoard();
+
+		cout << "Player 1 (x) starts" << endl;
+		char player[10];
+		char scoreXDisp[10];
+		char scoreODisp[10];
+		char drawsDisp[10];
 		
+		strcpy(player, "1 (x)");
+		strcpy(scoreXDisp, " wins");
+		strcpy(scoreODisp, " wins");
+		strcpy(drawsDisp, " draws");
+		
+
 		while (true) {
+			
 			cout << "#=#=#=#=#=#=#=#=#=#=#  Player " << player << " type coordinates of move (number first and capital letters eg 3b)" << endl;
 			printBoard();				
 			char move[3];
@@ -144,11 +161,11 @@ int main() { // should be translated to c++
 			
 			if (strcmp(player, "1 (x)") == 0) {
 				board[move[0] - 49][move[1]- 97] = 'x';
-				player = "2 (o)";
+				strcpy(player, "2 (o)");
 			}
 			else if (strcmp(player, "2 (o)") == 0) {
-				board[move[0]- 49][move[1]- 97] = "o";
-				player = "1 (x)";
+				board[move[0]- 49][move[1]- 97] = 'o';
+				strcpy(player, "1 (x)");
 			}
 			
 			char lastWin = checkWin();				
@@ -162,7 +179,7 @@ int main() { // should be translated to c++
 				printBoard();
 				break;
 			}
-			if (boardFull(board)) {
+			if (boardFull()) {
 				draws += 1;
 				printBoard();
 				break;
@@ -170,13 +187,13 @@ int main() { // should be translated to c++
 		}
 		
 		if (scoreX == 1) {
-			scoreXDisp = " win";
+			strcpy(scoreXDisp, " win");
 		}
 		if (scoreO == 1) {
-			scoreODisp = " win";
+			strcpy(scoreODisp, " win");
 		}
 		if (draws == 1) {
-			drawsDisp = " win";
+			strcpy(drawsDisp, " draw");
 		}
 		
 		cout << endl;
