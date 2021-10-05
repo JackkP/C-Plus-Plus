@@ -7,11 +7,10 @@ using namespace std;
  * Period 1 C Plus Plus
  */
 
-
-// This method gets a char for A, B, or C value from system input and avoids invalid responses (translated to c++)
-
+//declare board array
 char board[3][3] = {{' ', ' ', ' '},{' ', ' ', ' '},{' ', ' ', ' '}};
 
+// This method gets a char for A, B, or C value from system input and avoids invalid responses
 char getABC(char A, char B, char C) {
         char out;
 
@@ -19,7 +18,8 @@ char getABC(char A, char B, char C) {
 
         cin.get(input, 100);
 	cin.get();
-
+	
+	//if the input is a single char and that char matches a possible input
         if ((input[0] == A || input[0] == B || input[0] == C)  && input[1] == '\0') out = input[0];
         else {
                 cout << "invalid input please try again" << endl;
@@ -29,28 +29,30 @@ char getABC(char A, char B, char C) {
         return out;
 }
 
-// This Method Checks if the board has a three in a row of a value that is not a space, then returns that value (translated to c++)
+// This Method Checks if the board has a three in a row of a value that is not a space, then returns that value
 char checkWin(){
 	char rslt;
-        for (int i = 0; i<=2; i++ ) {
+        for (int i = 0; i<=2; i++ ) { // check all rows
 		if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != ' ') {
                         rslt = board[i][0];
                         break;
                 }
         }
 
-        for (int i = 0; i<=2; i++ ) {
+        for (int i = 0; i<=2; i++ ) { // check all columns
 		if (board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[0][i] != ' ') {
                         rslt = board[0][i];
                		break;
 		}
         }
-
+	
+	// check one diagonal
         if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != ' ') {
                 rslt = board[0][0];
 
         }
-
+	
+	//check other diagonal
         if (board[2][0] == board[1][1] && board[1][1] == board[0][2] && board[2][0] != ' ') {
                 rslt = board[2][0];
         }
@@ -60,7 +62,7 @@ char checkWin(){
 }
 
 
-// Printt the board with a nice layout (translated C++)
+// Printt the board with a nice layout
 int printBoard(){
 	cout << "   1   2   3" << endl;
 	cout << "a  " << board[0][0] << " | " << board[1][0] << " | " << board[2][0] << " " << endl;
@@ -71,7 +73,7 @@ int printBoard(){
 	return 0;
 }
 	
-// Check to see if the board is full by looking for spaces (translated to C++)
+// Check to see if the board is full by looking for spaces
 bool boardFull() {
 	bool full = true;
 	for(int i = 0; i<=2; i++) {
@@ -84,16 +86,18 @@ bool boardFull() {
 	return full;
 }
 	
-// This method gets a valid move from a player (translated to C++??)
+// This method gets a valid move from a player
 void getMove(char (& rslt)[3]) {
 	
 	char coords[100];
 	
+	// until a move is made
 	while (true){
 
 		cin.get(coords, 100);
 		cin.get();
-
+		
+		// if the string input is a valid move...
 		if ( 49 <= coords[0] && 51 >= coords[0] && 97 <= coords[1] && 99 >= coords[1] && coords[2] == '\0') {
 			if (board[coords[0] - 49][coords[1]- 97] == ' ') {
 				strcpy(rslt, coords);
@@ -111,7 +115,7 @@ void getMove(char (& rslt)[3]) {
 	return;
 }
 
-void clearBoard() {
+void clearBoard() { // set all characters in board to 0
 	
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
@@ -123,12 +127,12 @@ void clearBoard() {
 }
 
 
-int main() { // should be translated to c++
+int main() {
 	
 		
 	cout << "Welcome to Command Line Tic Tac Toe \n" << endl;
 	cout << "New Game" << endl;
-	cout << "===================";
+	cout << "===================" << endl;
 	
 	int scoreX = 0;
 	int scoreO = 0;
@@ -152,39 +156,46 @@ int main() { // should be translated to c++
 		strcpy(drawsDisp, " draws");
 		
 
-		while (true) {
+		while (true) { // single game loop, continue playing while in this loop
 			
 			cout << "#=#=#=#=#=#=#=#=#=#=#  Player " << player << " type coordinates of move (number first and capital letters eg 3b)" << endl;
 			printBoard();				
 			char move[3];
 			getMove(move);
 			
+			// if the current player is x, place an x and then switch the turn
 			if (strcmp(player, "1 (x)") == 0) {
 				board[move[0] - 49][move[1]- 97] = 'x';
 				strcpy(player, "2 (o)");
 			}
+			
+			// if the current player is o, place an o and then switch the turn
 			else if (strcmp(player, "2 (o)") == 0) {
 				board[move[0]- 49][move[1]- 97] = 'o';
 				strcpy(player, "1 (x)");
 			}
 			
-			char lastWin = checkWin();				
+			char lastWin = checkWin();
+			// if x won
 			if (lastWin == 'x') {
 				scoreX += 1;
 				printBoard();
 				break;
 			}
+			// if o won
 			else if (lastWin == 'o') {
 				scoreO += 1;
 				printBoard();
 				break;
 			}
+			// if a draw
 			if (boardFull()) {
 				draws += 1;
 				printBoard();
 				break;
 			}
 		}
+		// game over, play again?
 		
 		if (scoreX == 1) {
 			strcpy(scoreXDisp, " win");
@@ -207,7 +218,7 @@ int main() { // should be translated to c++
 			draws = 0;
 		}
 		else if(next == 'q') {
-			break;
+			return 0;
 		}
 	}
 	
