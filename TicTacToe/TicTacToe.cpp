@@ -8,7 +8,6 @@ using namespace std;
  */
 
 //declare board array
-char board[3][3] = {{' ', ' ', ' '},{' ', ' ', ' '},{' ', ' ', ' '}};
 
 // This method gets a char for A, B, or C value from system input and avoids invalid responses
 char getABC(char A, char B, char C) {
@@ -30,7 +29,8 @@ char getABC(char A, char B, char C) {
 }
 
 // This Method Checks if the board has a three in a row of a value that is not a space, then returns that value
-char checkWin(){
+char checkWin(char (&board)[3][3]){
+	
 	char rslt;
         for (int i = 0; i<=2; i++ ) { // check all rows
 		if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != ' ') {
@@ -63,7 +63,7 @@ char checkWin(){
 
 
 // Printt the board with a nice layout
-int printBoard(){
+int printBoard(char (&board)[3][3]){
 	cout << "   1   2   3" << endl;
 	cout << "a  " << board[0][0] << " | " << board[1][0] << " | " << board[2][0] << " " << endl;
 	cout << "  ---+---+---" << endl;
@@ -74,7 +74,7 @@ int printBoard(){
 }
 	
 // Check to see if the board is full by looking for spaces
-bool boardFull() {
+bool boardFull(char (&board)[3][3]) {
 	bool full = true;
 	for(int i = 0; i<=2; i++) {
 		for(int a = 0; a<=2; a++) {
@@ -87,7 +87,7 @@ bool boardFull() {
 }
 	
 // This method gets a valid move from a player
-void getMove(char (& rslt)[3]) {
+void getMove(char (& rslt)[3], char (&board)[3][3]) {
 	
 	char coords[100];
 	
@@ -115,7 +115,7 @@ void getMove(char (& rslt)[3]) {
 	return;
 }
 
-void clearBoard() { // set all characters in board to 0
+void clearBoard(char (&board)[3][3]) { // set all characters in board to 0
 	
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
@@ -129,7 +129,9 @@ void clearBoard() { // set all characters in board to 0
 
 int main() {
 	
-		
+	char board[3][3] = {{' ', ' ', ' '},{' ', ' ', ' '},{' ', ' ', ' '}};
+
+	
 	cout << "Welcome to Command Line Tic Tac Toe \n" << endl;
 	cout << "New Game" << endl;
 	cout << "===================" << endl;
@@ -142,7 +144,7 @@ int main() {
 	//continue playing while in this loop
 	while (true) {
 		
-		clearBoard();
+		clearBoard(board);
 
 		cout << "Player 1 (x) starts" << endl;
 		char player[10];
@@ -159,9 +161,9 @@ int main() {
 		while (true) { // single game loop, continue playing while in this loop
 			
 			cout << "#=#=#=#=#=#=#=#=#=#=#  Player " << player << " type coordinates of move (number first and capital letters eg 3b)" << endl;
-			printBoard();				
+			printBoard(board);				
 			char move[3];
-			getMove(move);
+			getMove(move, board);
 			
 			// if the current player is x, place an x and then switch the turn
 			if (strcmp(player, "1 (x)") == 0) {
@@ -175,23 +177,23 @@ int main() {
 				strcpy(player, "1 (x)");
 			}
 			
-			char lastWin = checkWin();
+			char lastWin = checkWin(board);
 			// if x won
 			if (lastWin == 'x') {
 				scoreX += 1;
-				printBoard();
+				printBoard(board);
 				break;
 			}
 			// if o won
 			else if (lastWin == 'o') {
 				scoreO += 1;
-				printBoard();
+				printBoard(board);
 				break;
 			}
 			// if a draw
-			if (boardFull()) {
+			if (boardFull(board)) {
 				draws += 1;
-				printBoard();
+				printBoard(board);
 				break;
 			}
 		}
