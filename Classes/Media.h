@@ -1,3 +1,5 @@
+#ifndef MEDIA_H
+#define MEDIA_H
 #include <iostream>
 #include <cstring>
 
@@ -5,12 +7,14 @@ using namespace std;
 
 class Media{
 	public:
-		Media(char Title[50], int Year);
+		Media(char* Title, int Year);
 		char* getTitle();
 		int getYear();
 
-	private:
+	protected:
 		char* Title;
 		int year;
 
 };
+
+#endif
