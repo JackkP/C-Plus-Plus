@@ -5,8 +5,8 @@
 
 using namespace std;
 
-Music::Music(char Title[50], int Year, float newDuration, char newArtist[50], char newPublisher[50]):Media(Title, Year){
-	duration = newDuraton;
+Music::Music(char* newTitle, int newYear, float newDuration, char* newArtist, char* newPublisher):Media(newTitle, newYear){
+	duration = newDuration;
 	artist = newArtist;
 	publisher = newPublisher;
 		
@@ -16,10 +16,14 @@ float Music::getDuration(){
 	return duration;
 }
 
-char* Music::getArtist(){
-        return Title;
+char* Music::getPublisher(){
+	return publisher;
 }
 
-char* Music::getPublisher(){
-	return publisher
+char* Music::getArtist(){
+	return artist;
+}
+Music::~Music(){
+	delete[] artist;
+	delete[] publisher;
 }

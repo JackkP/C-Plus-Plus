@@ -12,7 +12,7 @@ int main(){
 	strcpy(title, "test title");
 	char* director = new char[50];
 	strcpy(director, "test director");
-	Movie* test = new Movie(title, 1995, director, 2.2, 6.75);
-	cout << test->getYear() << ", " << test->getTitle();
+	Media* test = new Movie(title, 1995, director, 2.2, 6.75);
+	cout << test->getYear() << ", " << test->getTitle() << ", " << test->getDirector();
 
 }

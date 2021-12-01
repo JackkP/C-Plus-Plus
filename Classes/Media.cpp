@@ -5,14 +5,17 @@
 using namespace std;
 
 Media::Media(char* newTitle, int newYear){
-	Title = newTitle;
+	title = newTitle;
 	year = newYear;
 }
 
 char* Media::getTitle(){
-	return Title;
+	return title;
 }
 
 int Media::getYear(){
 	return year;
+}
+Media::~Media(){
+	delete[] title;
 }

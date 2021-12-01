@@ -5,13 +5,17 @@
 using namespace std;
 
 Movie::Movie(char* newTitle, int newYear, char* newDirector, float newDuration, float newRating):Media(newTitle, newYear){
-	Director = newDirector;
+	director = newDirector;
 	duration = newDuration;
 	rating = newRating;
 }
 
+Movie::~Movie(){
+	delete[] director;
+}
+
 char* Movie::getDirector(){
-	return Director;
+	return director;
 }
 float Movie::getDuration(){
 	return duration;

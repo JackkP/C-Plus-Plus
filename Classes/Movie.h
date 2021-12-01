@@ -9,12 +9,13 @@ using namespace std;
 class Movie : public Media{
 	public:
 		Movie(char* Title, int Year, char* Director, float duration, float rating);
+		~Movie();
 		char* getDirector();
 		float getDuration();
 		float getRating();
 	
 	private:
-		char* Director;
+		char* director;
 		float duration;
 		float rating;
 
