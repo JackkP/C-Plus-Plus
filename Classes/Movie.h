@@ -6,15 +6,16 @@
 
 using namespace std;
 
-class Movie : public Media{
+//prototype functions for Movie class
+class Movie : public Media{ //subclass of Media
 	public:
 		Movie(char* Title, int Year, char* Director, float duration, float rating);
-		~Movie();
-		char* getDirector();
+		~Movie(); //destructor
+		char* getDirector(); //other relevant functions
 		float getDuration();
 		float getRating();
 	
-	private:
+	private: //variables to store attributes of a movie specific only to movies
 		char* director;
 		float duration;
 		float rating;

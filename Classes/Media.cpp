@@ -3,7 +3,7 @@
 #include "Media.h"
 
 using namespace std;
-
+//constructor including variables shared across all media subclasses
 Media::Media(char* newTitle, int newYear){
 	title = newTitle;
 	year = newYear;
@@ -16,6 +16,6 @@ char* Media::getTitle(){
 int Media::getYear(){
 	return year;
 }
-Media::~Media(){
+Media::~Media(){ //destructor deletes object stored as pointer
 	delete[] title;
 }

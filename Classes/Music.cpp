@@ -4,7 +4,7 @@
 #include "Music.h"
 
 using namespace std;
-
+//constructor with superclass constructor
 Music::Music(char* newTitle, int newYear, float newDuration, char* newArtist, char* newPublisher):Media(newTitle, newYear){
 	duration = newDuration;
 	artist = newArtist;
@@ -12,6 +12,7 @@ Music::Music(char* newTitle, int newYear, float newDuration, char* newArtist, ch
 		
 }
 
+//functions for returning values
 float Music::getDuration(){
 	return duration;
 }
@@ -23,7 +24,9 @@ char* Music::getPublisher(){
 char* Music::getArtist(){
 	return artist;
 }
-Music::~Music(){
+
+//destructor
+Music::~Music(){ //delete variables stored as pointer (so they don't take up space on the heap)
 	delete[] artist;
 	delete[] publisher;
 }
