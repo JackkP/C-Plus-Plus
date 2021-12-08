@@ -9,9 +9,10 @@ class Music : public Media{ //subclass of Media
 	public:
 		Music(char* Title, int Year, float duration, char* artist, char* Publisher);
 		~Music(); //destructor
-		char* getArtist(); //other functions
-		char* getPublisher();
-		float getDuration();
+		virtual char* getArtist(); //other functions
+		virtual char* getPublisher();
+		virtual float getDuration();
+		virtual void print();
 		
 
 	private: //variables to store attibutes specific to music

@@ -9,6 +9,10 @@ Media::Media(char* newTitle, int newYear){
 	year = newYear;
 }
 
+void Media::print(){
+	cout << "Media - '" << title << "', " << year << endl;
+}
+
 char* Media::getTitle(){
 	return title;
 }

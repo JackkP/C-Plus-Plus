@@ -8,7 +8,8 @@ using namespace std;
 class Media{
 	public:
 		Media(char* Title, int Year);
-		~Media();
+		virtual ~Media();
+		virtual void print();
 		char* getTitle();
 		int getYear();
 

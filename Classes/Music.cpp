@@ -12,6 +12,10 @@ Music::Music(char* newTitle, int newYear, float newDuration, char* newArtist, ch
 		
 }
 
+void Music::print(){
+	cout << "Music - '" << title << "', " << year << ", Duration: " << duration << " mins, Artist: " << artist << ", Publisher: " << publisher << endl;
+}
+
 //functions for returning values
 float Music::getDuration(){
 	return duration;

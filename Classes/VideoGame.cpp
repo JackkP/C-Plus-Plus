@@ -12,6 +12,10 @@ Videogame::Videogame(char* newTitle, int newYear, char* newPublisher, float newR
 	
 }
 
+void Videogame::print(){// print function
+	cout << "Videogame - '" << title << "', " << year << ", Publisher: " << publisher << ", Rating: " << rating << endl;
+}
+
 //functions to return stored variables
 float Videogame::getRating(){
 	return rating;

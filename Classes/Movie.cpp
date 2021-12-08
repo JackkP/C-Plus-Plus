@@ -15,6 +15,9 @@ Movie::~Movie(){
 	//delete objects that are stored in Movie class as pointers
 	delete[] director;
 }
+void Movie::print(){ // print function
+	cout << "Movie - '" << title << "', " << year << ", Director: " << director << ", Duration: " << duration << " mins, Rating: " << rating << endl;
+}
 
 //functions for returning values of stuff
 char* Movie::getDirector(){
