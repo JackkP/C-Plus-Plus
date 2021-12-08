@@ -194,17 +194,23 @@ int main(){
 						}
 						else cout << "try again" << endl;
 					}
-					if(strcmp(confirm, "yes") == 0){ //delete confirmed
-						int numdeleted = 0;
+					int numdeleted = 0;
+					bool done = false; //do until all objects are deleted
+					while(!done){
+						done = true; //set to done
 						for(vector<Media*>::iterator ptr = m.begin(); ptr < m.end(); ptr++){ //check every object			
-							if(strContains((*ptr)->getTitle(), next)){
-								//delete the object
-								numdeleted++;
+							if(strContains((*ptr)->getTitle(), next)) { //if the year matches
+								(*ptr) -> ~Media(); //delete object
+								m.erase(ptr); //erase from vector
+								numdeleted++; //count the number of objects to delete
+								done = false; //if there is one in there, not done
+								break;
 							}
 						}
-						cout << "deleted " << numdeleted << " objects" << endl;
-						numMed -= numdeleted; //update the number of objects
 					}
+						
+					cout << "deleted " << numdeleted << " objects" << endl;
+					numMed -= numdeleted; //update the number of objects		
 				}
 			}
 			
@@ -236,12 +242,18 @@ int main(){
 					}
 					if(strcmp(next, "yes") == 0){ //if delete confirmed then perform search again (yes, its inefficient)
 						int numdeleted = 0;
-						for(vector<Media*>::iterator ptr = m.begin(); ptr < m.end(); ptr++){ //check every object			
-							if((*ptr)->getYear() == cmpYear) { //if the year matches
+						bool done = false; //to delete all objects in vector
+						while(!done){
+							done = true; //set to done
+							for(vector<Media*>::iterator ptr = m.begin(); ptr < m.end(); ptr++){ //check every object			
+								if((*ptr)->getYear() == cmpYear) { //if the year matches
 								
-								//delete the object
-								
-								numdeleted++; //count the number of objects to delete
+									(*ptr) -> ~Media(); //delete object
+									m.erase(ptr); //erase from vector
+									numdeleted++; //count the number of objects to delete
+									done = false; //if there is one in there, not done
+									break;
+								}
 							}
 						}
 						cout << "deleted " << numdeleted << " objects" << endl;
