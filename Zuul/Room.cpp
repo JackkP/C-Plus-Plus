@@ -4,39 +4,32 @@
 #include "Room.h"
 #include <map>
 
-/*const int NORTH = 0;
-const int EAST = 1;
-const int SOUTH = 2;
-const int WEST = 3;*/
-
 using namespace std;
 
-Room::Room(char* newName, char* newDescription){
+Room::Room(char* newName, char* newDescription){ //constructor sets name and description
 	name = newName;
 	description = newDescription;
+
+	for(int i = 0; i < 4; i++) adjacent.insert(pair<int, Room*>(i, NULL)); 
 }
-void setAdjacent(int direction, Room* room){
-	map.insert(diresction, room); 
+void Room::setAdjacent(int direction, Room* room){ //add a room to the map of adjacent rooms
+	adjacent.erase(direction);
+	adjacent.insert(pair<int, Room*>(direction, room)); //add the room to the map
 }
 
-Room* getAdjacent(int direction){
+Room* Room::getAdjacent(int direction){
 	return adjacent.at(direction);
 }
 
-char* getName(){
+char* Room::getName(){
 	return name;
 }
 
-char* getDescription(){
+char* Room::getDescription(){
 	return description;
 }
 
-~Room(){
+Room::~Room(){
 	delete name;
 	delete description;
-}
-
-
-
-
 }
