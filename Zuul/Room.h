@@ -4,26 +4,27 @@
 #include <iostream>
 #include <cstring>
 #include <map>
+#include <vector>
 #include "item.h"
 
 using namespace std;
 
 class Room{
 	public:
-		/*const int NORTH = 0;
-		const int EAST = 1;
-		const int SOUTH = 2;
-		const int WEST = 3;*/
-
 		Room(char* newName, char* newDescription); //constructor
-		void setAdjacent(int direction, Room* room); //add a room adjacent
+		
+		void setAdjacent(int direction, Room* room); //add an adjacent room
 		Room* getAdjacent(int direction); //return the adjacent room
+		
 		char* getName(); //return the name of the room
 		char* getDescription(); //return the description of the room
+		
 		~Room(); //destructor
 
 	private:
-		map<int, Room*> adjacent;
+		vector<Item*> items; //to keep track of items in the room
+		map<int, Room*> adjacent; //to keep track of adjacent rooms
+		
 		char* name;
 		char* description;
 

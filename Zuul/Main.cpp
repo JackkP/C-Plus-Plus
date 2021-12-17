@@ -30,14 +30,11 @@ int main(){
 
 	testRoom->setAdjacent(NORTH, adjacentRoom);
 	
-	cout << "reachedTest";
+	cout << testRoom->getAdjacent(NORTH) << endl;
+	cout << testRoom->getAdjacent(EAST) << endl;
 
-	cout << testRoom->getAdjacent(NORTH);
-
-	cout << "successfully got adjacent";
-
-	if(testRoom->getAdjacent(NORTH) != NULL){
-		Room* newRoomPointer = testRoom->getAdjacent(1);
+	if(testRoom->getAdjacent(EAST) != NULL){
+		Room* newRoomPointer = testRoom->getAdjacent(NORTH);
 		cout << "name: " << newRoomPointer->getName() << " descritption: " << newRoomPointer->getDescription() << endl;
 	}
 
