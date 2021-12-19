@@ -8,12 +8,13 @@ using namespace std;
 
 class Item{
 	public:
-		Item(char* newName);
-		~Item();
-		char* getName();
+		Item(char* newName); //constructor
+		char* getName(); //return name
+
+		~Item(); //destructor
 
 	private:
-		char* name;
+		char* name; //the only thing that needs to be stored is the name of the item
 };
 
 #endif
