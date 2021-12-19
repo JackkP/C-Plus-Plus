@@ -15,6 +15,7 @@ const int WEST = 3;
  * Zuul, the text based game!
  * The player starts as a remote submarine outside the titanic and tries to retrieve the captain's journal and engineer's notebook
  * User interface could use some work, it's not especially intuitive.
+ * Look at the map in the Zuul folder to make life easier becuase remembering the layout can be kind of hard.
  */
 
 bool contains(vector<Item*> vect, Item* item){
