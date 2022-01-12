@@ -1,24 +1,23 @@
-#ifndef NODE_H
+#ifndef NODE_H //header guard
 #define NODE_H
-
-
+#include "Student.h"
 
 using namespace std;
 
 class Node{
 	public:
-		Node(int* student); //constructor
+		Node(Student* student); //constructor
 
 		Node* getNext(); //get next Node pointer
 		void setNext(Node*); //set the next pointer to the corresponding node pointer
 		
-		int* getStudent(); //get student pointer
+		Student* getStudent(); //get student pointer
 		
 		~Node(); //destructor
 
 	private:
-		int* Student;
-		Node* Next;
+		Student* stdntPtr; //pointer to student
+		Node* Next; //pointer to next node
 
 };
 

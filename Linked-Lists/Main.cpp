@@ -3,23 +3,25 @@
 
 using namespace std;
 
+/* Jack Porter, January 2022
+ * Linked List colaborative project
+ */
+
 int main(){
 	
-	int i = 12;
-	int* ptr = & i;
+	Student* studentPtr = new Student(12);
 
-	Node* node = new Node(ptr);
+	Node* node = new Node(studentPtr); //create a node with a student
 	
-	cout << node->getStudent() << ", " << *node->getStudent() << endl;
+	cout << "pointer to student 1" << node->getStudent() << ", student1 ID: " << node->getStudent()->getID() << endl;
 
-	int j = 14;
-	ptr = & j;
+	studentPtr = new Student(10);
 
-	Node* node2 = new Node(ptr);
-	cout << node2->getStudent() << ", " << *node2->getStudent() << endl;
+	Node* node2 = new Node(studentPtr); //create a second student node
+	cout << "pointer to student2: " << node2->getStudent() << ", student2 ID " << node2->getStudent()->getID() << endl;
 
-	node->setNext(node2);
-	cout << *node->getNext()->getStudent() << endl;
+	node->setNext(node2); //link second node to first node
+	cout << "next student id: " << node->getNext()->getStudent()->getID() << endl;
 
 
 	return 0;

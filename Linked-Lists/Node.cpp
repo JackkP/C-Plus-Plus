@@ -1,24 +1,23 @@
 #include "Node.h"
-#include "Student.h"
 
 using namespace std;
 
-Node::Node(int* newStudent){
-	Student = newStudent;
+Node::Node(Student* newStudent){ //constructor
+	stdntPtr = newStudent;
 }
 
-Node* Node::getNext(){
+Node* Node::getNext(){ //return pointer to next node
 	return Next;
 }
 
-void Node::setNext(Node* newNext){
+void Node::setNext(Node* newNext){ //set a pointer to the next node
 	Next = newNext;
 }
 
-int* Node::getStudent(){
-	return Student;
+Student* Node::getStudent(){ //get student pointer
+	return stdntPtr;
 }
 
-Node::~Node(){
-	delete Student;
+Node::~Node(){ //destructor
+	delete stdntPtr;
 }
