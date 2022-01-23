@@ -5,25 +5,30 @@
 
 using namespace std;
 
-Student::Student(char* f, char* l, int g, int newId){ //constructor with ID
+Student::Student(char* f, char* l, float g, int newId){ //constructor with ID
 	first = f;
 	last = l;
 	gpa = g;
 	id = newId;
 }
 
-char* Student::getFirst(){
+char* Student::getFirst(){ //return first name
 	return first;
 }
 
-char* Student::getLast(){
+char* Student::getLast(){ //return last name
 	return last;
 }
 
-int Student::getGPA(){
+float Student::getGPA(){ //return GPA
 	return gpa;
 }
 
 int Student::getID(){ //return ID
 	return id;
+}
+
+Student::~Student(){ //destructor
+	delete first;
+	delete last;
 }
